@@ -1,0 +1,39 @@
+[package]
+name = "fuzz-pallet-staking-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = { version = "0.4", features = ["arbitrary-derive"] }
+itertools = "0.11"
+pallet-pooled-staking = { path = "../../tanssi/pallets/pooled-staking" }
+frame-support = { git = "https://github.com/moondance-labs/substrate.git", branch = "tanssi-polkadot-v0.9.43", version = "4.0.0-dev", default-features = false }
+frame-system = { git = "https://github.com/moondance-labs/substrate.git", branch = "tanssi-polkadot-v0.9.43", version = "4.0.0-dev", default-features = false }
+sp-runtime = { git = "https://github.com/moondance-labs/substrate.git", branch = "tanssi-polkadot-v0.9.43", version = "7.0.0", default-features = false }
+num-traits = "0.2.8"
+parity-scale-codec = { version = "3.0.0", default-features = false, features = [ "derive", "max-encoded-len" ] }
+scale-info = { version = "2.1.1", default-features = false }
+sp-core = { git = "https://github.com/moondance-labs/substrate.git", branch = "tanssi-polkadot-v0.9.43", version = "7.0.0", default-features = false }
+sp-io = { git = "https://github.com/moondance-labs/substrate.git", branch = "tanssi-polkadot-v0.9.43", version = "7.0.0", default-features = false }
+pallet-balances = { git = "https://github.com/moondance-labs/substrate", branch = "tanssi-polkadot-v0.9.43", default-features = false, features = ["std"] }
+
+
+[dependencies.fuzz-pallet-staking]
+path = ".."
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[profile.release]
+debug = 1
+
+[[bin]]
+name = "fuzz_target_1"
+path = "fuzz_targets/fuzz_target_1.rs"
+test = false
+doc = false
