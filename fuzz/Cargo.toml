@@ -20,6 +20,7 @@ scale-info = { version = "2.1.1", default-features = false }
 sp-core = { git = "https://github.com/moondance-labs/substrate.git", branch = "tanssi-polkadot-v0.9.43", version = "7.0.0", default-features = false }
 sp-io = { git = "https://github.com/moondance-labs/substrate.git", branch = "tanssi-polkadot-v0.9.43", version = "7.0.0", default-features = false }
 pallet-balances = { git = "https://github.com/moondance-labs/substrate", branch = "tanssi-polkadot-v0.9.43", default-features = false, features = ["std"] }
+similar-asserts = "1.1.0"
 
 
 [dependencies.fuzz-pallet-staking]
